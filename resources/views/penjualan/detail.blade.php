@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div>
+        <h1>Judul {{ $penjualan->nama_produk }}</h1>
+    </div>
+    <div>
         <a href="/penjualan" class="btn btn-success mb-3">Kembali Kesemua Produk</a>
         <a href="{{ route('penjualan.edit', $penjualan->id) }}" class="btn btn-warning mb-3">Edit</a>
         <form action="{{ route('penjualan.destroy', $penjualan->id) }}" method="POST" class="d-inline"
@@ -9,9 +12,7 @@
             <button class="btn btn-danger btn-sm">Hapus</button>
         </form>
     </div>
-    <div>
-        <h1>Judul {{ $penjualan->nama_produk }}</h1>
-    </div>
+
     <div>
         <img src="{{ asset('storage/' . $penjualan->foto_produk) }}" width="200" alt="Foto Produk Sebelumnya">
     </div>
