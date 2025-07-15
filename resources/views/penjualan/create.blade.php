@@ -52,8 +52,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="deksripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" required rows="3"></textarea>
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <textarea class="form-control" type="text" id="deskripsi" name="deskripsi" required rows="3">{{ old('deskripsi') }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>

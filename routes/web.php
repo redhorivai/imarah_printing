@@ -19,4 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/detail', function () {
+    return view('penjualan.detail');
+});
+
 Route::resource('penjualan', PenjualanController::class);

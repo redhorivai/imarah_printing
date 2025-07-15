@@ -42,7 +42,9 @@ class PenjualanController extends Controller
             'nama_produk' => 'required|string|max:255',
             'nama_slug' => 'required|string|max:255',
             'harga' => 'required|integer',
+            'kategori' => 'string',
             'foto_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi' => 'string',
         ]);
 
         if ($request->hasFile('foto_produk')) {
@@ -62,7 +64,8 @@ class PenjualanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $penjualan = Penjualan::findOrFail($id);
+        return view('penjualan.edit', compact('penjualan'));;
     }
 
     /**
@@ -74,7 +77,33 @@ class PenjualanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $penjualan = Penjualan::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama_produk' => 'required|string|max:255',
+            'nama_slug' => 'required|string|max:255',
+            'harga' => 'required|integer',
+            'kategori' => 'string',
+            'foto_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi' => 'string',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            if ($penjualan->foto) {
+                Storage::disk('public')->delete($penjualan->foto);
+            }
+            $validated['foto'] = $request->file('foto')->store('foto_produk', 'public');
+        }
+
+        $penjualan->update($validated);
+
+        return redirect()->route('penjualan.index')->with('success', 'Data berhasil diupdate');
+    }
+
+    public function show($id)
+    {
+         $penjualan = Penjualan::findOrFail($id);
+        return view('penjualan.detail', compact('penjualan'));;
     }
 
     /**

@@ -14,6 +14,6 @@ class Penjualan extends Model
         'harga',
         'kategori',
         'foto_produk',
-        'deksripsi'
+        'deskripsi'
     ];
 }

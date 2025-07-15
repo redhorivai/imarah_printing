@@ -29,6 +29,7 @@
                         <td>{{ $item->harga }}</td>
                         <td>{{ $item->kategori }}</td>
                         <td>
+                            <a href="{{ route('penjualan.show', $item->id) }}" class="btn btn-light btn-sm"><i class="fa fa-eye">View</i></a>
                             <a href="{{ route('penjualan.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('penjualan.destroy', $item->id) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Yakin ingin menghapus?')">
